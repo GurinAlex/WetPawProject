@@ -1,0 +1,26 @@
+.row-post {
+  //outline: 1px solid orange;
+  display: flex;
+  flex-direction: row;
+  //justify-content: right;
+
+}
+.row-right {
+  width: 100%;
+  //outline: 1px solid red;
+  display: flex;
+  justify-content: flex-end;
+  p {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+.row-left {
+  width: 10rem;
+  //outline: 1px solid #3df3ff;
+  display: flex;
+  justify-content: flex-start;
+  a {
+    margin-top: 1.2rem;
+  }
+}

@@ -1,0 +1,22 @@
+<app-alert></app-alert>
+<header>
+  <h1 routerLink="/">Wet Paw</h1>
+
+  <ul *ngIf="auth.isUserAuthenticated()">
+    <li>
+      <a (click)="logout($event)">Выйти</a>
+    </li>
+  </ul>
+</header>
+
+<div
+  *ngIf="auth.isUserAuthenticated()"
+  class="navbar">
+  <ul class="row">
+    <li routerLinkActive="active"><a routerLink="/user/profile">Профиль</a></li><hr/>
+    <li routerLinkActive="active" ><a routerLink="/user/create">Создать пост</a></li><hr/>
+    <li routerLinkActive="active" ><a routerLink="/user/posts">Ваши посты</a></li>
+  </ul>
+</div>
+
+<router-outlet></router-outlet>

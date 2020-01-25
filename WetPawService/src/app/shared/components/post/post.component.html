@@ -1,0 +1,12 @@
+ <div class="img-box">
+    <img *ngIf="post.image" [src]="post.image">
+    <img *ngIf="!post.image" src="http://nashzeleniymir.ru/wp-content/uploads/2015/12/%D0%A1%D0%BE%D0%B1%D0%B0%D0%BA%D0%B0-%D0%BB%D0%B0%D0%B1%D1%80%D0%B0%D0%B4%D0%BE%D1%80-%D1%84%D0%BE%D1%82%D0%BE.jpg">
+  </div>
+<!--  <h3>Автор: <a href="#" title="Посмотреть все публикации данного автора">{{post.author}}</a></h3>-->
+ <h3>Адрес: {{post.address}}</h3>
+ <h4>{{post.created_at | date: 'medium': '+1000': 'ru'}}</h4>
+  <h2>{{post.description}}</h2>
+ <div class="row-post">
+  <div class="row-left"> <a [routerLink]="['/post', post.id]">Читать дальше</a></div>
+   <div class="row-right"><p>Автор: {{post.author}}</p></div>
+ </div>

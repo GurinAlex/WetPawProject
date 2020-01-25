@@ -1,0 +1,92 @@
+<h2 class="auth-text-center">Регистрация</h2>
+<div class="auth-container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <img src="https://sun9-5.userapi.com/c858228/v858228710/128fd5/OJby07A9EFE.jpg">
+    <div><a [routerLink]="['/user', 'login']">У вас уже есть аккаунт?</a></div>
+    <div class="error" *ngIf="auth.error$ | async as error">
+      {{ error }}
+    </div>
+<!--    <div class="message-login" *ngIf="message">-->
+<!--      {{message}}-->
+<!--    </div>-->
+
+    <div
+      [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+    >
+      <input id="email" type="text" formControlName="email" placeholder="Введите email">
+      <div
+        *ngIf="form.get('email').touched && form.get('email').invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('email').errors.required">
+          Введите поле email
+        </small>
+        <small *ngIf="form.get('email').errors.email">
+          Введите верный email
+        </small>
+      </div>
+    </div>
+
+    <div
+      [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+    >
+      <input id="password" type="password" formControlName="password" placeholder="Введите пароль">
+      <div
+        class="validation"
+        *ngIf="form.get('password').touched && form.get('password').invalid"
+      >
+        <small *ngIf="form.get('password').errors.required">
+          Введите пароль
+        </small>
+        <small *ngIf="form.get('password').errors.minlength">
+          Пароль должен быть не менее
+          {{form.get('password').errors.minlength.requiredLength}}
+          символов. Сейчас он
+          {{form.get('password').errors.minlength.actualLength}}
+          символа.
+        </small>
+      </div>
+    </div>
+
+    <div
+      [ngClass]="{invalid: form.get('passwordRepeat').touched && form.get('passwordRepeat').invalid}"
+    >
+      <input id="password-repeat" type="password" formControlName="passwordRepeat" placeholder="Подтверждение пароля">
+      <div
+        class="validation"
+        *ngIf="form.get('passwordRepeat').touched && form.get('passwordRepeat').invalid"
+      >
+        <small>
+          Пароли не совпадают
+        </small>
+      </div>
+    </div>
+
+    <div
+      [ngClass]="{invalid: form.get('name').touched && form.get('name').invalid}"
+    >
+      <input id="name" type="text" formControlName="name" placeholder="Ваше имя">
+      <div
+        *ngIf="form.get('name').touched && form.get('name').invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('name').errors.required">
+          Пожалуйста, введите имя
+        </small>
+        <small *ngIf="form.get('name').errors.maxlength">
+          Имя может содержать не более 30 символов
+        </small>
+      </div>
+    </div>
+
+    <div class="row">
+      <button
+        type="submit"
+        class="auth-submit-button"
+        [disabled]="form.invalid || submitted"
+      >Регистрация</button>
+    </div>
+  </form>
+</div>
+

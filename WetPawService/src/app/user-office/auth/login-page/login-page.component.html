@@ -1,0 +1,50 @@
+<h2 class="auth-text-center">Авторизация</h2>
+<div class="auth-container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <img src="https://sun9-5.userapi.com/c858228/v858228710/128fd5/OJby07A9EFE.jpg">
+    <div><a [routerLink]="['/user', 'signup']">У вас еще нет аккаунта?</a></div>
+    <div class="error" *ngIf="auth.error$ | async as error">
+      {{ error }}
+    </div>
+<!--    <div class="message-login" *ngIf="message">-->
+<!--      {{message}}-->
+<!--    </div>-->
+
+    <div
+      [ngClass]="{invalid: form.get('username').touched && form.get('username').invalid}"
+    >
+      <input id="username" type="text" formControlName="username" placeholder="Введите логин">
+      <div
+        *ngIf="form.get('username').touched && form.get('username').invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('username').errors.required">
+          Введите логин
+        </small>
+      </div>
+    </div>
+
+    <div
+      [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+    >
+      <input id="password" type="password" formControlName="password" placeholder="Введите пароль">
+      <div
+        class="validation"
+        *ngIf="form.get('password').touched && form.get('password').invalid"
+      >
+        <small *ngIf="form.get('password').errors.required">
+          Введите пароль
+        </small>
+      </div>
+    </div>
+    <div class="row">
+      <button
+        type="submit"
+        class="auth-submit-button"
+        [disabled]="form.invalid || submitted"
+      >Войти</button>
+    </div>
+  </form>
+</div>
+

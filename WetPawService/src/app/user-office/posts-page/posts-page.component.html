@@ -1,0 +1,31 @@
+<div *ngIf="posts$ | async;else loading">
+<div class="main-container">
+  <div class="content-container-even">
+  <div *ngFor="let post of postEven">
+    <div class="content-card">
+      <div class="img-box"><img src="{{post.image}}"></div>
+      <h3>Адрес: <a>{{post.address}}</a></h3>
+      <h4>{{post.created_at | date: 'medium': null: 'ru'}}</h4>
+      <h2>{{post.description}}</h2>
+      <a [routerLink]="['/user','post', 'edit', post.id]">Редактировать</a>
+    </div>
+  </div>
+  </div>
+
+  <div class="content-container-noteven">
+    <div *ngFor="let post of postNotEven">
+      <div class="content-card">
+        <div class="img-box"><img src="{{post.image}}"></div>
+        <h3>Адрес: <a>{{post.address}}</a></h3>
+        <h4>{{post.created_at | date: 'medium': null: 'ru'}}</h4>
+        <h2>{{post.description}}</h2>
+        <a [routerLink]="['/user','post', 'edit', post.id]">Редактировать</a>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p class="text-center">Загрузка постов...</p>
+</ng-template>

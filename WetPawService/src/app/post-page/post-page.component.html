@@ -1,0 +1,25 @@
+<div class="go-back"><a (click)="goBeck()">На главную</a></div>
+<div *ngIf="post$ | async as post; else loading">
+<!--      <div class="text-center text-header"></div>-->
+    <div class="main-postpage-container">
+      <div class="img-box-post-page"><img src="{{post.image}}"></div>
+    </div>
+  <div class="main-container">
+    <div class="content-container-left">
+      <h2>Краткое описание: {{post.description}}</h2>
+      <h2>Контакты: {{post.contacts}}</h2>
+    </div>
+    <div class="content-container-right">
+      <h2>Адрес: {{ post.address }}</h2>
+      <h2>Автор: {{post.author}}</h2>
+      <h2 *ngIf="post.sex === true">Пол: Мальчик</h2>
+      <h2 *ngIf="post.sex === false">Пол: Девочка</h2>
+      <h2>Категория: {{post.category}}</h2>
+    </div>
+  </div>
+
+  </div>
+
+<ng-template #loading>
+  <p class="text-center">Загрузка поста...</p>
+</ng-template>

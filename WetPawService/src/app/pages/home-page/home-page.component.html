@@ -1,0 +1,35 @@
+<div *ngIf="postsEven.length > 0; else loading">
+<div
+  *ngIf="postsEven as postsEven"
+  class="">
+  <div
+    *ngIf="postNotEven as postsNotEven"
+    class="">
+  <div class="main-container">
+
+    <div class="content-container-even"><app-post
+      class="content-card"
+      *ngFor="let post of postsEven"
+      [post]="post">
+    </app-post></div>
+
+    <div class="content-container-noteven">
+      <app-post
+        class="content-card"
+        *ngFor="let post of postsNotEven"
+        [post]="post">
+      </app-post>
+    </div>
+  </div>
+</div>
+</div>
+  <footer>
+    <h2>Пожертвования(сбербанк): 4276 6700 2405 8389</h2>
+  </footer>
+</div>
+
+
+
+<ng-template #loading>
+  <p class="text-center">Загрузка постов...</p>
+</ng-template>

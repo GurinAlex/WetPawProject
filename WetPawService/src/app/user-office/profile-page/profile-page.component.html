@@ -1,0 +1,19 @@
+<div *ngIf="user; else loading" class="profile-form">
+  <div class="profile-image"><img></div>
+  <div class="profile-data">
+    <div class="main-container">
+      <div class="form-profile">
+        <div class="user-image"><p>Фото пользователя</p></div>
+        <div class="text-container">
+          <h2>Имя: {{user.username}}</h2>
+          <h2>E-mail: {{user.email}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #loading>
+  <p class="text-center">Загрузка профиля...</p>
+</ng-template>

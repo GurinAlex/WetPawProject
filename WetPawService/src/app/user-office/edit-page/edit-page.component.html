@@ -1,0 +1,94 @@
+<div class="create-main-row-container">
+  <div class="create-image-download-container">
+    <h2>Обновите фотографию при необходимости</h2>
+    <div><img [src]="imageURL"></div>
+    <div><input id="image" type="file" (change)="onFileSelected($event)"></div>
+  </div>
+
+  <form class="create-description-container" [formGroup]="form" (ngSubmit)="submit()">
+    <!-- Блок адреса-->
+    <div
+      [ngClass]="{invalid: form.get('address').touched && form.get('address').invalid}"
+      class="form-control"
+    >
+      <label for="address">Адрес:</label>
+      <input id="address" type="text" formControlName="address">
+      <div
+        *ngIf="form.get('address').touched && form.get('address').invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('address').errors.required">
+          Пожалуйста, укажите адрес
+        </small>
+      </div>
+    </div>
+    <!-- Блок описания-->
+    <div
+      [ngClass]="{invalid: form.get('description').touched && form.get('description').invalid}"
+      class="form-control"
+    >
+      <label for="description">Описание:</label>
+      <textarea id="description" type="text" formControlName="description"></textarea>
+      <div
+        *ngIf="form.get('description').touched && form.get('description').invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('description').errors.required">
+          Пожалуйста, добавьте описание
+        </small>
+      </div>
+    </div>
+
+    <!-- Блок пола-->
+    <div>
+      <label>Пол:</label>
+
+      <select formControlName="sex">
+        <option value="Мальчик">Мальчик</option>
+        <option value="Девочка">Девочка</option>
+      </select>
+    </div>
+
+    <!--    Блок контактов-->
+    <div
+      class="form-control contacts"
+      [ngClass]="{invalid: form.get('contacts').touched && form.get('contacts').invalid}"
+    >
+      <label for="contacts">Контакты:</label>
+      <textarea id="contacts" type="text" formControlName="contacts"></textarea>
+      <div
+        *ngIf="form.get('contacts').touched && form.get('contacts').invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('contacts').errors.required">
+          Пожалуйста, укажите как с вами можно связаться
+        </small>
+      </div>
+    </div>
+    <!-- Выбор раздела-->
+    <div>
+      <label>Выберите раздел публикации:</label>
+
+      <select formControlName="category">
+        <option value="Потерявшиеся">Потерявшиеся</option>
+        <option value="Найденные">Найденыши</option>
+        <option value="Ищут дом">Ищут хозяев</option>
+        <option value="Приют">Приют</option>
+      </select>
+    </div>
+
+    <div class="row">
+    <button
+      type="submit"
+      class="create-submit-button"
+      [disabled]="form.invalid "
+    >Обновить пост</button>
+
+      <button
+        class="remove-button"
+        (click)="remove(post.id)"
+      >Удалить пост</button>
+    </div>
+  </form>
+</div>
+
